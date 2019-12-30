@@ -11,6 +11,9 @@
 # production
 /build
 
+# semanticui
+/public/css/semanticui
+
 # misc
 .DS_Store
 .env.local

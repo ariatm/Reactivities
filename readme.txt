@@ -26,3 +26,12 @@ npm install semantic-ui-react
 
 #add Semantic UI React CSS link to public\index.html
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
+
+#install react-widgets & date
+npm install react-widgets react-widges-date-fns
+
+#install date-fns according to the required version
+npm install date-fns@2.0.0-alpha.13
+
+#install revalidate
+npm install revalidate
