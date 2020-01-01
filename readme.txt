@@ -28,10 +28,25 @@ npm install semantic-ui-react
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
 
 #install react-widgets & date
-npm install react-widgets react-widges-date-fns
+npm install react-widgets react-widgets-date-fns
 
 #install date-fns according to the required version
 npm install date-fns@2.0.0-alpha.13
 
 #install revalidate
 npm install revalidate
+
+#create new class library for netcore
+dotnet new classlib -n Infrastructure
+
+#adding new class library to the solution
+dotnet sln add Infrastructure
+
+#adding dependency to the project
+cd Infrastructure
+dotnet add reference ../Application/
+cd API
+dotnet add reference ../Infrastructure/
+
+#save key to user store (only for development)
+dotnet user-secrets set "TokenKey" "super secret key" -p API
