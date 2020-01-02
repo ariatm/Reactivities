@@ -1,6 +1,5 @@
 import { RootStore } from "./rootStore";
 import { observable, action } from "mobx";
-import { isNullOrUndefined } from "util";
 
 export default class ModalStore {
     rootStore: RootStore;
