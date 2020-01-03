@@ -1,3 +1,5 @@
+14-8
+
 #install chocolatey (in order to install nvm-windows)
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
