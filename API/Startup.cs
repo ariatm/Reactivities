@@ -36,6 +36,7 @@ namespace API
         {
             services.AddDbContext<DataContext>(opt =>
             {
+                opt.UseLazyLoadingProxies();
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
             
@@ -61,10 +62,15 @@ namespace API
                 .AddEntityFrameworkStores<DataContext>()
                 .AddSignInManager<SignInManager<AppUser>>();
 
-            //var builder = services.AddIdentityCore<AppUser>();
-            //var identityBuilder = new IdentityBuilder(builder.UserType, builder.Services);
-            //identityBuilder.AddEntityFrameworkStores<DataContext>();
-            //identityBuilder.AddSignInManager<SignInManager<AppUser>>();
+            services.AddAuthorization(opt =>
+            {
+                opt.AddPolicy("IsActivityHost", policy =>
+                {
+                    policy.Requirements.Add(new IsHostRequirement());
+                });
+            });
+
+            services.AddTransient<IAuthorizationHandler, IsHostRequirementHandler>();
 
             //var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["TokenKey"]));
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("super secret key"));
